@@ -11,10 +11,10 @@ It demonstrates:
 - A simple test mode (--test) to exercise multiple branches without interactive input
 
 Run (interactive):
-    python main.py
+    python3 main.py
 
 Run (scripted tests):
-    python main.py --test
+    python3 main.py --test
 """
 
 import sys
