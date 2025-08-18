@@ -117,6 +117,18 @@
 If included, the script uses `input()` for interaction and plain `if/elif/else` for decision-making.
 
 ```bash
-python main.py        # interactive
-python main.py --test # scripted demo across categories
+python3 main.py        # interactive
+python3 main.py --test # scripted demo across categories
 ```
+
+---
+
+Part 4: Reflection and Submission
+
+How the rule-based system works.
+My Tech Support Troubleshooter emulates a classic expert system using plain IF–THEN logic and a simple decision tree. First, it performs keyword routing: the user’s free-text description is scanned for category terms (e.g., “won’t turn on” → POWER, “wifi” → INTERNET). Each category has a handler that asks short yes/no questions and follows deterministic branches. For example, in POWER: IF no lights/fans → check outlet/cable; IF outlet OK but no PSU light → try another charger; IF long power-press has no effect → escalate. The program uses input() for interaction and if/elif/else for decisions, printing actionable steps at each node. There’s also a --test mode with scripted answers so I can exercise multiple branches repeatedly without typing. The code comments mirror the rule set in the README, keeping the design and implementation aligned.
+
+Challenges while prompting the AI (design + code).
+The biggest challenge was consistency: I needed the AI’s outputs for Part 1 (ideas/choice), Part 2 (rules), and Part 3 (code) to match exactly, so I kept reiterating constraints like “use the same categories and phrasing.” Another challenge was granularity: human troubleshooting is fuzzy, but rules must be crisp. I asked the AI to convert natural guidance into explicit IF–THEN statements and to separate routing (keywords) from branch logic, which prevented overlap and “rule shadowing.” Choosing keywords required balancing coverage vs. false matches (e.g., “boot” vs. “reboot”), so I requested condensed keyword sets and a fallback UNKNOWN category with a clarifying question.
+
+On the coding side, I asked for commented, minimal Python (no external libraries, no ML), a clear function per category, and a test harness (--test) to quickly validate paths. I also prompted for defensive details—normalizing input, yes/no parsing, and a final escalation path—to avoid infinite loops or dead ends. Finally, I used the AI to cross-check that the code’s questions and actions exactly reflect the README rules. Iterating this way helped keep scope tight, outputs deterministic, and the assignment’s requirements front and center.
